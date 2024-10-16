@@ -1,0 +1,33 @@
+<!--- Inicio: 03/10/2024 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="shortcut icon" href="../static/media/logosem.png" type="image/x-icon">
+    <title>MedSys</title>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="../static/media/logosem.png" width="200">
+        </div>
+        <h1>Seja bem vindo!</h1>
+        <a href="{% url 'cad' %}" class="cad" ><img src="../static/media/addpacie.png" width="60px"></a>
+        <a href=""><img src="../static/media/addmed.png" width="60px"></a>
+        <a href=""><img src="../static/media/addreme.png" width="60px"></a>
+    </header>
+    <table>
+        <caption><h1>Pacientes</h1></caption>
+        {% for pacientes in pacientes%}
+        <tr>
+            <th>{{pacientes.nome}}</th>
+            <td><a href="{% url 'informacoes' pacientes.id %}">Informações</a></td>
+            <td><a href="{% url 'atu' pacientes.id %}">Atualizar Dados</a></td>
+            <td><a href="{% url 'delete' pacientes.id %}"><img src="../static/media/lixeira.png" width="35px" style="margin-left: 190px;"></a></td>
+        </tr>
+        {% endfor %}
+    </table>   
+</body>
+</html>
