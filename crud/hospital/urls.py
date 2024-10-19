@@ -14,5 +14,7 @@ urlpatterns = [
     path('cadmed/',views.cadmed,name="cadmed"),
     path('salvarmed',views.salvarmed,name='salvarmed'),
     path('informacoesmed/<int:id>',views.informacoesmed,name='informacoesmed'),
-    path("deletemed/<int:id>",views.deletemed,name="deletemed"),
+    path('deletemed/<int:id>',views.deletemed,name='deletemed'),
+    path('agendar/', views.agendar_consulta, name='agendar_consulta'),
+    path('consultas/', views.listar_consultas, name='listar_consultas'),
 ]

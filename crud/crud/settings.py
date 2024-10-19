@@ -106,12 +106,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Lisbon'
+
+USE_TZ = True
 
 USE_I18N = True
 
 USE_TZ = True
 
+
+DATETIME_FORMAT = 'd/m/Y H:i'  # Formato: dia/mês/ano hora:minuto
+DATE_FORMAT = 'd/m/Y'  # Formato: dia/mês/ano
+TIME_FORMAT = 'H:i'  # Formato: hora:minuto
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

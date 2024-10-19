@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Pacientes,Medicos
+from .models import Consulta
+from .forms import ConsultaForm
 # Create your views here.
 def home(request):
     pacientes = Pacientes.objects.all()
@@ -82,3 +84,17 @@ def deletemed(request,id):
     medicos = Medicos.objects.get(id=id)
     medicos.delete()
     return redirect(tabmed)
+
+def agendar_consulta(request):
+    if request.method == 'POST':
+        form = ConsultaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_consultas')
+    else:
+        form = ConsultaForm()
+    return render(request, 'agendar_consulta.html', {'form': form})
+
+def listar_consultas(request):
+    consultas = Consulta.objects.all()  # Obtém todas as consultas
+    return render(request, 'listar_consultas.html', {'consultas': consultas})

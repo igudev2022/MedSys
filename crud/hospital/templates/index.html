@@ -16,7 +16,7 @@
         <h1>Seja bem vindo!</h1>
         <a href="{% url 'cad' %}" class="cad" ><img src="../static/media/addpacie.png" width="60px"></a>
         <a href="{% url 'tabmed' %}"><img src="../static/media/tabmed.png" width="60px"></a>
-        <a href=""><img src="../static/media/addreme.png" width="60px"></a>
+        <a href="{% url 'agendar_consulta' %}"><img src="../static/media/agendar.png" width="60px"></a>
     </header>
     <table>
         {% csrf_token %}  
