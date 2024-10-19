@@ -15,10 +15,11 @@
         </div>
         <h1>Seja bem vindo!</h1>
         <a href="{% url 'cad' %}" class="cad" ><img src="../static/media/addpacie.png" width="60px"></a>
-        <a href=""><img src="../static/media/addmed.png" width="60px"></a>
+        <a href="{% url 'tabmed' %}"><img src="../static/media/tabmed.png" width="60px"></a>
         <a href=""><img src="../static/media/addreme.png" width="60px"></a>
     </header>
     <table>
+        {% csrf_token %}  
         <caption><h1>Pacientes</h1></caption>
         {% for pacientes in pacientes%}
         <tr>

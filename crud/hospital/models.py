@@ -7,13 +7,16 @@ class Pacientes(models.Model):
     endereco = models.CharField(max_length=50,null=False)
     cpf = models.CharField(max_length=11,null=False)
 
+    def __str__(self):
+     return self.descricao
 
+ 
 class Medicos(models.Model):
     nome = models.CharField(max_length=50,null=False)
     crm = models.CharField(max_length=6,null=False)
-    horarios = models.CharField(max_length=20,null=False)
     especialidade = models.CharField(max_length=30,null=False)
 
     def __str__(self):
      return self.descricao
+
 

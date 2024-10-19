@@ -19,7 +19,7 @@
     </header>
     <div>
     <form action="{% url 'salvar' %}" method="post">
-        {% csrf_token %}
+        {% csrf_token %}    
         <label for="">Nome:</label>
         <input type="text" name="nome">
         <label for="">Idade:</label>
@@ -36,6 +36,7 @@
         <input type="text" name="cpf">
         <input type="submit" value="Cadastrar">
     </form>
+
 </div>
 </body>
 </html>
