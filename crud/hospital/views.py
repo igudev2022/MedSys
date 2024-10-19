@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from .models import Pacientes,Medicos
 from .models import Consulta
 from .forms import ConsultaForm
@@ -98,3 +98,8 @@ def agendar_consulta(request):
 def listar_consultas(request):
     consultas = Consulta.objects.all()  # Obtém todas as consultas
     return render(request, 'listar_consultas.html', {'consultas': consultas})
+
+def listar_consultas_paciente(request, paciente_id):
+    paciente = get_object_or_404(Pacientes, id=paciente_id)
+    consultas = Consulta.objects.filter(paciente=paciente)
+    return render(request, 'listar_consultas_paciente.html', {'paciente': paciente, 'consultas': consultas})

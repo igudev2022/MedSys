@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Consultas de {{ paciente.nome }}</title>
+    </head>
+    <body>
+        <h1>Consultas de {{ paciente.nome }}</h1>
+        <ul>
+            {% for consulta in consultas %}
+                <li>Data: {{ consulta.data_horario }} - Médico: {{ consulta.medico.nome }} -Especialidade: {{ consulta.medico.especialidade}}</li>
+            {% empty %}
+                <li>Nenhuma consulta encontrada para este paciente.</li>
+            {% endfor %}
+        </ul>
+        <a href="/">Voltar</a>
+    </body>
+    </html>
+    
+</body>
+</html>

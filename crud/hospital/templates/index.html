@@ -25,6 +25,7 @@
         <tr>
             <th>{{pacientes.nome}}</th>
             <td><a href="{% url 'informacoes' pacientes.id %}">Informações</a></td>
+            <td><a href="{% url 'listar_consultas_paciente' pacientes.id %} ">consultas</a></td>
             <td><a href="{% url 'atu' pacientes.id %}">Atualizar Dados</a></td>
             <td><a href="{% url 'delete' pacientes.id %}"><img src="../static/media/lixeira.png" width="35px" style="margin-left: 190px;"></a></td>
         </tr>
