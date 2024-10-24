@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/media/logosem.png" type="image/x-icon">
+    <title>Agendar Consultas</title>
+</head>
+<body>
+    <h2>Agendar Consulta</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agendar</button>
+</form>
+<a href="{% url 'listar_consultas' %}">Ver todas as consultas</a>
+</body>
+</html>
