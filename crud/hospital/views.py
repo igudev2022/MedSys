@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render,redirect
 from .models import Pacientes,Medicos,Estados,Especialidades
 from .models import Consulta
@@ -35,8 +36,9 @@ def salvar(request):
 
 
 def atu(request,id):
+    estados = Estados.objects.all().order_by('sigla')
     pacientes = Pacientes.objects.get(id=id)
-    return render(request,'atu.html',{'pacientes': pacientes})
+    return render(request,'atu.html',{'pacientes': pacientes, 'estados': estados})
 
 def update(request):
     id = request.POST['id']
@@ -44,8 +46,12 @@ def update(request):
     pacientes.nome = request.POST['nome']
     pacientes.idade = request.POST['idade']
     pacientes.sexo = request.POST['sexo']
-    pacientes.endereco = request.POST['endereco']
+    pacientes.logradouro = request.POST.get('logradouro')
+    pacientes.cep = request.POST['cep']
+    pacientes.cidade = request.POST['cidade']
+    pacientes.estado = request.POST['estado']
     pacientes.cpf = request.POST['cpf']
+    pacientes.email = request.POST['email']
     pacientes.save()
     return redirect(home)
 
@@ -64,26 +70,30 @@ def tabmed(request):
 
 def cadmed(request):
     estados = Estados.objects.all().order_by('sigla')
-    especialidades = Especialidades.objects.all().order_by('nome')
+    especialidades= Especialidades.objects.all().order_by('nome')
     return render(request,'cadmed.html',{'estados': estados, 'especialidades':especialidades})
 
 def salvarmed(request):
     if request.method == 'POST':
         vnome = request.POST['nome']
         vcrm = request.POST['crm']
-        vespecialidade = request.POST['especialidade']
         vlogradouro = request.POST['logradouro']
+        vespecialidades_id = request.POST.get('especialidades')
         vcpf = request.POST['cpf']
         vcidade = request.POST['cidade']
         vestado = request.POST['estado']
         vcep = request.POST['cep']
 
-        # Salva o novo médico no banco de dados
-        Medicos.objects.create(nome=vnome, crm=vcrm, especialidade=vespecialidade, logradouro=vlogradouro, cpf=vcpf, cidade=vcidade, 
-        estado=vestado,cep=vcep )
+        if not vespecialidades_id:
+            return HttpResponse("O ID da especialidade não foi fornecido.", status=400)
+        # Obtém a instância de Especialidades
+        especialidades_instance = get_object_or_404(Especialidades, id=vespecialidades_id)
+
+        # Salva o novo médico no banco de dados, usando a instância da especialidade
+        Medicos.objects.create(nome=vnome,crm=vcrm,especialidades=especialidades_instance,logradouro=vlogradouro,cpf=vcpf,cidade=vcidade,estado=vestado,cep=vcep)
 
         # Redireciona para a página que exibe a lista de médicos
-        return redirect('tabmed')  # Substitua 'nome_da_view_ou_url' pelo nome da URL da view desejada
+        return redirect('tabmed')  # Substitua 'tabmed' pelo nome correto da sua URL
 
     # Se não for uma requisição POST, renderiza a página normalmente
     medicos = Medicos.objects.all()

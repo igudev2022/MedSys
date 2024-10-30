@@ -32,11 +32,11 @@ class Medicos(models.Model):
     cidade = models.CharField(max_length=20,null=False,default="")
     cpf = models.CharField(max_length=11, null=False,default="")  # Tornar o CPF único
     email = models.CharField(max_length=40,null=False,default="")
-    especialidade = models.ForeignKey(Especialidades,on_delete=models.CASCADE,null=False)
+    especialidades = models.ForeignKey(Especialidades,on_delete=models.CASCADE,null=False,default="0")
     consultas = models.ManyToManyField(Pacientes)
 
     def __str__(self):
-        return f'{self.nome} - {self.especialidade}'  # Retorna o nome e a especialidade
+        return f'{self.nome} - {self.especialidades}'  # Retorna o nome e a especialidade
 
 class Telefones(models.Model):
     numero = models.CharField(max_length=13,null=False)

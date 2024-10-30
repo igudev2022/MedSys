@@ -19,7 +19,7 @@
         {% csrf_token %}
         <input type="text" name="id" value="{{pacientes.id}}" readonly><br>
         <label for="">Nome:</label>
-        <input type="text" name="nome" value="{{pacientes.nome}}"><br>
+        <input type="text" name="nome" value="{{pacientes.nome}}" placeholder="Nome"><br>
         <label for="">Idade:</label>
         <input type="text" name="idade" value="{{pacientes.idade}}"><br>
         <label for="">Sexo:</label>
@@ -28,11 +28,24 @@
             <option value="Feminino" {% if paciente.sexo == "F" %}selected{% endif %}>Feminino</option>
             <option value="Outro" {% if paciente.sexo == "O" %}selected{% endif %}>Outro</option>
         </select>
-        <label for="">Endereço:</label>
-        <input type="text" name="endereco" value="{{pacientes.endereco}}"><br>
+        <label for="">Logradouro:</label>
+        <input type="text" name="endereco" value="{{pacientes.logradouro}}"><br>
+        <label for="">CEP:</label>
+        <input type="text" name="cep" placeholder="CEP" value="{{pacientes.cep}}">
+        <label for="">Cidade</label>
+        <input type="text" name="cidade" placeholder="Cidade" value="{{pacientes.cidade}}">
+        <select name="estado" id="">
+            {% for estado in estados %}
+            <option value="{{estado.sigla}}">{{estado.sigla}}</option>
+            {% endfor %}
+            </select>
         <label for="">Cpf:</label>
         <input type="text" name="cpf" value="{{pacientes.cpf}}"><br>
+        <input type="email" name="email" placeholder="E-mail" value="email">
         <input type="submit" value="Atualizar">
     </form>
 </body>
 </html>
+
+
+    

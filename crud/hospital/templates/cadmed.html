@@ -22,7 +22,7 @@
             <input type="text" name="crm" placeholder="CRM">
             <select name="especialidades" id="">
                 {% for especialidade in especialidades %}
-                    <option value="{{especialidade.nome}}">{{especialidade.nome}}</option>
+                    <option value="{{especialidade.id}}">{{especialidade.nome}}</option>
                 {% endfor %}
             </select>
             <input type="text" name="logradouro" placeholder="Logradouro">
