@@ -46,12 +46,16 @@ def update(request):
     pacientes.nome = request.POST['nome']
     pacientes.idade = request.POST['idade']
     pacientes.sexo = request.POST['sexo']
-    pacientes.logradouro = request.POST.get('logradouro')
+    logradouro = request.POST.get('logradouro')
+    if logradouro is not None:
+            pacientes.logradouro = logradouro
+    else:
+            print("O campo 'logradouro' não foi encontrado.")
     pacientes.cep = request.POST['cep']
     pacientes.cidade = request.POST['cidade']
     pacientes.estado = request.POST['estado']
     pacientes.cpf = request.POST['cpf']
-    pacientes.email = request.POST['email']
+    pacientes.email = request.POST.get('email')
     pacientes.save()
     return redirect(home)
 
