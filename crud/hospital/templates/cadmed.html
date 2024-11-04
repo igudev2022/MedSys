@@ -10,7 +10,11 @@
 <body>
   <header>
     <img src="../static/media/logosem.png" width="200">
+<<<<<<< HEAD
             <h1>Cadastro de Medicos</h1>
+=======
+            <h1>Cadastro de Pacientes</h1>
+>>>>>>> 1caf02f67f0852e2002227c936c7aac1a3eece81
             <a href="{% url 'tabmed' %}" class="cad" ><img src="../static/media/tabmed.png" width="60px"></a>
             <a href=""><img src="../static/media/addmed.png" width="60px"></a>
             <a href=""><img src="../static/media/addreme.png" width="60px"></a>
@@ -18,6 +22,7 @@
     <div>
         <form action="{% url 'salvarmed' %}" method="post">
             {% csrf_token %}
+<<<<<<< HEAD
             <input type="text" name="nome" placeholder="Nome">
             <input type="text" name="crm" placeholder="CRM">
             <select name="especialidades" id="">
@@ -34,6 +39,14 @@
                  {% endfor %}
               </select> 
             <input type="text" name="cpf" placeholder="CPF">  
+=======
+            <label for="">Nome:</label>
+            <input type="text" name="nome">
+            <label for="">Crm:</label>
+            <input type="text" name="crm">
+            <label for="">Especialidade:</label>
+            <input type="text" name="especialidade">
+>>>>>>> 1caf02f67f0852e2002227c936c7aac1a3eece81
             <input type="submit" value="Cadastrar">
         </form>
     </div>

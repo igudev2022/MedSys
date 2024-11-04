@@ -1,9 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render,redirect
 from .models import Pacientes,Medicos,Estados,Especialidades
-from .models import Consulta
-from .forms import ConsultaForm
-# Create your views here.
+
+
 def home(request):
     pacientes = Pacientes.objects.all()
     return render(request,'index.html',{'pacientes':pacientes})
@@ -27,13 +26,10 @@ def salvar(request):
         # Salva o novo paciente no banco de dados
         Pacientes.objects.create(nome=vnome, idade=vidade, sexo=vsexo, logradouro=vlogradouro, cpf=vcpf, cidade=vcidade, estado=vestado,email=vemail,cep=vcep) 
 
-        # Redireciona para a página inicial ou outra URL
-        return redirect('home')
-
-    # Se não for uma requisição POST, renderiza a página normalmente
+    
     pacientes = Pacientes.objects.all()
     return render(request, 'index.html', {'pacientes': pacientes})
-
+   
 
 def atu(request,id):
     estados = Estados.objects.all().order_by('sigla')
@@ -55,7 +51,8 @@ def update(request):
     pacientes.cidade = request.POST['cidade']
     pacientes.estado = request.POST['estado']
     pacientes.cpf = request.POST['cpf']
-    pacientes.email = request.POST.get('email')
+    pacientes.email = request.POST['email']
+    pacientes.cpf = request.POST['cpf']
     pacientes.save()
     return redirect(home)
 
@@ -111,22 +108,3 @@ def deletemed(request,id):
     medicos = Medicos.objects.get(id=id)
     medicos.delete()
     return redirect(tabmed)
-
-def agendar_consulta(request):
-    if request.method == 'POST':
-        form = ConsultaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('listar_consultas')
-    else:
-        form = ConsultaForm()
-    return render(request, 'agendar_consulta.html', {'form': form})
-
-def listar_consultas(request):
-    consultas = Consulta.objects.all()  # Obtém todas as consultas
-    return render(request, 'listar_consultas.html', {'consultas': consultas})
-
-def listar_consultas_paciente(request, paciente_id):
-    paciente = get_object_or_404(Pacientes, id=paciente_id)
-    consultas = Consulta.objects.filter(paciente=paciente)
-    return render(request, 'listar_consultas_paciente.html', {'paciente': paciente, 'consultas': consultas})

@@ -8,6 +8,15 @@
 </head>
 <body>
     <h2>Agendar Consulta</h2>
+<<<<<<< HEAD
 
+=======
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agendar</button>
+</form>
+<a href="{% url 'listar_consultas' %}">Ver todas as consultas</a>
+>>>>>>> 1caf02f67f0852e2002227c936c7aac1a3eece81
 </body>
 </html>
