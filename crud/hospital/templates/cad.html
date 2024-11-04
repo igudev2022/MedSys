@@ -19,7 +19,6 @@
     </header>
     <div>
     <form action="{% url 'salvar' %}" method="post">
-<<<<<<< HEAD
         {% csrf_token %}   
             <input type="text" name="nome" class="nome" placeholder="Nome">
                 <input type="number" name="idade" class="idade" placeholder="Idade">
@@ -46,26 +45,3 @@
 </body>
 </html>
         
-=======
-        {% csrf_token %}    
-        <label for="">Nome:</label>
-        <input type="text" name="nome">
-        <label for="">Idade:</label>
-        <input type="text" name="idade">
-        <label for="">Sexo:</label>
-        <select name="sexo" id="sexo">
-            <option value="Masculino">Masculino</option>
-            <option value="Feminino">Feminino</option>
-            <option value="Outro">Outro</option>
-        </select>
-        <label for="">Endereço:</label>
-        <input type="text" name="endereco">
-        <label for="">Cpf:</label>
-        <input type="text" name="cpf">
-        <input type="submit" value="Cadastrar">
-    </form>
-
-</div>
-</body>
-</html>
->>>>>>> 1caf02f67f0852e2002227c936c7aac1a3eece81

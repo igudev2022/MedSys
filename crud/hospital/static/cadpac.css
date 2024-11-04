@@ -21,7 +21,6 @@ img{
     margin: 0px 10px 10px 0;
     max-width: 186px;
 }
-<<<<<<< HEAD
 label{
   display: flex;
 }
@@ -30,11 +29,6 @@ label{
 
 input, select {
     width: 50%;
-=======
-
-input[type=text], select {
-    width: 100%;
->>>>>>> 1caf02f67f0852e2002227c936c7aac1a3eece81
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -64,7 +58,6 @@ input[type=text], select {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 10px;
-<<<<<<< HEAD
   }
 
 
@@ -72,6 +65,3 @@ input[type=text], select {
     width: 100%;
   }
   
-=======
-  }
->>>>>>> 1caf02f67f0852e2002227c936c7aac1a3eece81

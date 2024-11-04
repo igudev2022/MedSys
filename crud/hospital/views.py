@@ -108,3 +108,22 @@ def deletemed(request,id):
     medicos = Medicos.objects.get(id=id)
     medicos.delete()
     return redirect(tabmed)
+
+def agendar_consulta(request):
+    if request.method == 'POST':
+        form = ConsultaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_consultas')
+    else:
+        form = ConsultaForm()
+    return render(request, 'agendar_consulta.html', {'form': form})
+
+def listar_consultas(request):
+    consultas = Consulta.objects.all()  # Obtém todas as consultas
+    return render(request, 'listar_consultas.html', {'consultas': consultas})
+
+def listar_consultas_paciente(request, paciente_id):
+    paciente = get_object_or_404(Pacientes, id=paciente_id)
+    consultas = Consulta.objects.filter(paciente=paciente)
+    return render(request, 'listar_consultas_paciente.html', {'paciente': paciente, 'consultas': consultas})
