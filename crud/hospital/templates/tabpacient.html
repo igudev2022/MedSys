@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/tabpac.css">
+    <link rel="shortcut icon" href="../static/media/logosem.png" type="image/x-icon">
+
+    <title>Pacientes</title>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="../static/media/logosem.png" width="200">
+        </div>
+        <h1>Seja bem vindo!</h1>
+        <a href="{% url 'cad' %}" class="cad" ><img src="../static/media/addpacie.png" width="60px"></a>
+        <a href="{% url 'tabmed' %}"><img src="../static/media/tabmed.png" width="60px"></a>
+        <a href="{% url 'agendar' %}"><img src="../static/media/agendar.png" width="60px"></a>
+    </header>
+    <table>
+        {% csrf_token %}  
+        <caption><h1>Pacientes</h1></caption>
+        {% for pacientes in pacientes%}
+        <tr>
+            <th><a href="{% url 'informacoes' pacientes.id %}">{{pacientes.nome}}</a></th>
+            <td><a href="{% url 'atu' pacientes.id %}">Atualizar Dados</a></td>
+            <td><a href="{% url 'delete' pacientes.id %}"><img src="../static/media/lixeira.png" width="35px" style="margin-left: 190px;"></a></td>
+        </tr>
+        {% endfor %}
+    </table>   
+</body>
+</html>

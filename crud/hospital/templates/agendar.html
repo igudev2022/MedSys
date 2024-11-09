@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>agendar</h1>
+      <form action="">
+        <select name="paciente" id="">
+            {% for paciente in pacientes %}
+            <option value="{{paciente.nome}}">{{paciente.nome}}</option>
+            {%endfor%}
+        </select><br>
+        <select name="medico" id="">
+            {% for medico in medicos %}
+            <option value="{{medico.nome}}">{{medico.nome}}</option>
+            {%endfor%}
+        </select><br>
+    <input type="date" nome="data"><br>
+    <input type="submit" value="agendar"><br>
+      </form>
+</body>
+</html>

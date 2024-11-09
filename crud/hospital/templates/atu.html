@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/media/logosem.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/atu.css">
+    <title>Atualizar dados</title>
+</head>
+<body>
+    <header>
+        <img src="../static/media/logosem.png" width="200">
+    <h1>Atualizar Dados Pacientes</h1>
+    <a href="{% url 'home' %}" class="cad" ><img src="../static/media/home.png" width="60px"></a>
+    <a href=""><img src="../static/media/addmed.png" width="60px"></a>
+    <a href=""><img src="../static/media/addreme.png" width="60px"></a>
+</header>
+    <form action="{% url 'update' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="id" value="{{pacientes.id}}" readonly><br>
+        <label for="">Nome:</label>
+        <input type="text" name="nome" value="{{pacientes.nome}}" placeholder="Nome"><br>
+        <label for="">Idade:</label>
+        <input type="text" name="idade" value="{{pacientes.idade}}"><br>
+        <label for="">Sexo:</label>
+        <select id="sexo" name="sexo">
+            <option value="Masculino" {% if pacientes.sexo == "Masculino" %}selected{% endif %}>Masculino</option>
+            <option value="Feminino" {% if pacientes.sexo == "Feminino" %}selected{% endif %}>Feminino</option>
+            <option value="Outro" {% if pacientes.sexo == "Outro" %}selected{% endif %}>Outro</option>
+        </select>
+        <label for="">Logradouro:</label>
+        <input type="text" name="endereco" value="{{pacientes.logradouro}}"><br>
+        <label for="">CEP:</label>
+        <input type="text" name="cep" placeholder="CEP" value="{{pacientes.cep}}">
+        <label for="">Cidade</label>
+        <input type="text" name="cidade" placeholder="Cidade" value="{{pacientes.cidade}}">
+        <select name="estado" id="">
+            {% for estado in estados %}
+            <option value="{{estado.sigla}}">{{estado.sigla}}</option>
+            {% endfor %}
+            </select>
+        <label for="">Cpf:</label>
+        <input type="text" name="cpf" value="{{pacientes.cpf}}"><br>
+        <input type="email" name="email" placeholder="E-mail" value="{{pacientes.email}}">
+        <input type="submit" value="Atualizar">
+    </form>
+</body>
+</html>
+
+
+    

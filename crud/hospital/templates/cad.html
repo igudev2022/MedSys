@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/media/logosem.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/cadpac.css">
+    <title>Cadastrar Pacientes</title>
+</head>
+<body>
+    <header>
+       
+            <img src="../static/media/logosem.png" width="200">
+       
+        <h1>Cadastro de Pacientes</h1>
+        <a href="{% url 'tabpacient' %}" class="cad" ><img src="../static/media/home.png" width="60px"></a>
+        <a href=""><img src="../static/media/addmed.png" width="60px"></a>
+        <a href=""><img src="../static/media/addreme.png" width="60px"></a>
+    </header>
+    <div>
+    <form action="{% url 'salvar' %}" method="post">
+        {% csrf_token %}   
+            <input type="text" name="nome" class="nome" placeholder="Nome">
+                <input type="number" name="idade" class="idade" placeholder="Idade">
+              
+                <select name="sexo" id="sexo" class="sexo" name="Sexo">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
+                </select> 
+            
+            <input type="text" name="logradouro" placeholder="Logradouro">
+            <input type="text" name="cep" placeholder="CEP">
+            <input type="text" name="cidade" placeholder="Cidade">
+                <select name="estado" id="">
+                {% for estado in estados %}
+                    <option value="{{estado.sigla}}">{{estado.sigla}}</option>
+                {% endfor %}
+                </select>
+            <input type="text" name="cpf" placeholder="CPF">  
+            <input type="email" name="email" placeholder="E-mail">
+            <input type="submit" value="Cadastrar">
+        </form>
+</div>
+</body>
+</html>
+        

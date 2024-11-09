@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/media/logosem.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/infor.css">
+    <title>Informações</title>
+</head>
+<body>
+    <header>
+        <img src="../static/media/logosem.png" width="200">
+     <h1>Informações</h1>
+     <a href="{% url 'home' %}" class="cad" ><img src="../static/media/home.png" width="60px"></a>
+     <a href=""><img src="../static/media/addmed.png" width="60px"></a>
+        <a href=""><img src="../static/media/addreme.png" width="60px"></a>
+    </header>
+<div>
+    <ul>
+        <h1>Dados</h1>
+            <li>
+                Nome:{{pacientes.nome}} 
+            </li>
+            <li>
+                Idade: {{pacientes.idade}} anos
+            </li>
+            <li>
+                Sexo: {{pacientes.sexo}}    
+            </li>
+            <li>
+                Endereço: {{pacientes.logradouro}}, {{pacientes.cidade}}, {{pacientes.estado}}, CEP: {{pacientes.cep}}
+            </li>
+             <li>
+                CPF: {{pacientes.cpf}}
+             </li>  
+             <li>
+                E-mail: {{pacientes.email}}
+             </li>
+</div>             
+</body>
+</html>

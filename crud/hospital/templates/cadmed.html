@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/media/logosem.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/cadmed.css">
+    <title>Cadastro de medicos</title>
+</head>
+<body>
+  <header>
+    <img src="../static/media/logosem.png" width="200">
+            <h1>Cadastro de Medicos</h1>
+            <a href="{% url 'tabmed' %}" class="cad" ><img src="../static/media/tabmed.png" width="60px"></a>
+            <a href=""><img src="../static/media/addmed.png" width="60px"></a>
+            <a href=""><img src="../static/media/addreme.png" width="60px"></a>
+        </header>
+    <div>
+        <form action="{% url 'salvarmed' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="nome" placeholder="Nome">
+            <input type="text" name="crm" placeholder="CRM">
+            <select name="especialidades" id="">
+                {% for especialidade in especialidades %}
+                    <option value="{{especialidade.id}}">{{especialidade.nome}}</option>
+                {% endfor %}
+            </select>
+            <input type="text" name="logradouro" placeholder="Logradouro">
+            <input type="text" name="cep" placeholder="CEP">
+            <input type="text" name="cidade" placeholder="Cidade">
+             <select name="estado" id="">
+                {% for estado in estados %}
+                 <option value="{{estado.sigla}}">{{estado.sigla}}</option>
+                 {% endfor %}
+              </select> 
+            <input type="text" name="cpf" placeholder="CPF">  
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+</body>
+</html>
